@@ -16,9 +16,9 @@ from astar import (
 )
 st.set_page_config(
     page_title="Autonomous Grid Agent",
-    page_icon="🤖"
+    # page_icon="🤖"
 )
-st.title("🤖 Autonomous Grid Agent")
+st.title("Autonomous Grid Agent")
 st.write(
     "Create an environment for the AI agent by "
     "setting a start point, goal, and obstacles."
@@ -134,14 +134,14 @@ for row in range(ROWS):
 
                 st.rerun()
 st.sidebar.divider()
-if st.sidebar.button("▶ Run Agent"):
+if st.sidebar.button("Run Agent"):
     if st.session_state.start is None:
         st.warning(
-            "⚠️ Please set a Start position first."
+            "Please set a Start position first."
         )
     elif st.session_state.goal is None:
         st.warning(
-            "⚠️ Please set a Goal position first."
+            "Please set a Goal position first."
         )
     else:
         path, explored = astar(
@@ -156,7 +156,7 @@ if st.sidebar.button("▶ Run Agent"):
         st.rerun()
 if st.session_state.search_completed:
     st.divider()
-    st.subheader("📊 Search Results")
+    st.subheader("Search Results")
     if st.session_state.path is not None:
         path_cost = calculate_path_cost(
             st.session_state.path
@@ -165,7 +165,7 @@ if st.session_state.search_completed:
             st.session_state.explored
         )
         st.success(
-            "✅ Path found successfully!"
+            "Path found successfully!"
         )
         col1, col2 = st.columns(2)
         with col1:
@@ -180,7 +180,7 @@ if st.session_state.search_completed:
             )
         # A* Analysis
         st.divider()
-        st.subheader("🧠 A* Path Analysis")
+        st.subheader("A* Path Analysis")
         st.write(
             "A* evaluates a cell using:"
         )
@@ -205,7 +205,7 @@ if st.session_state.search_completed:
         )
     else:
         st.error(
-            "❌ No path exists between "
+            "No path exists between "
             "the Start and Goal."
         )
 if st.sidebar.button("Clear Grid"):
